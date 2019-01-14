@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BMI-Rechner</title>
+        <meta charset="UTF-8">
+        <script>
+        
+        // Funktionen
+            
+            // Eingabe der Größe
+            function inputHeight () {
+                var height = prompt("Bitte gib deine Größe in cm ein!");
+                height = parseInt(height);
+                if (height > 0 && height < 300) {
+                    return height;
+                } else {
+                    console.log("Bitte gib für die Größe eine Zahl zwischen 1 und 299 ein!"); // Menschen größer als 300 cm eher unmöglich!!!
+                }
+            }
+            
+            // Eingabe des Gewichts
+            function inputWeight () {
+                var weight = prompt("Bitte gib dein Gewicht in kg ein!");
+                weight = parseInt(weight);
+                if (weight > 0 && weight < 500) {
+                    return weight;
+                } else {
+                    console.log("Bitte gib für das Gewicht eine Zahl zwischen 1 und 499 ein!"); // Menschen schwerer als 500 kg eher unmöglich!!!
+                }
+            }
+            
+            // Umrechnung Größe von Zentimeter in Meter
+            function convertCmToMeter(valueInCm) {
+                return valueInCm / 100;
+            }
+
+            // Berechnung BMI
+            function calculateBMI(height, weight) {
+                return weight / (height * height);
+            }
+
+            // Runden auf 1 Dezimalstelle
+            function rountToOneFloat (value) {
+                return Math.round(value * 10) / 10;
+            }
+
+            // Einteilung in BMI-Kategorie
+            function getCategoryFromBMI (bmiValue) {
+                var category = "";
+                if(bmiValue < 18.5) {
+                    category = "Untergewicht";
+                }
+                if(bmiValue >= 18.5 && bmiValue < 25.0) {
+                    category = "Normalgewicht";
+                }
+                if(bmiValue >= 25.0 && bmiValue < 30.0) {
+                    category = "Übergewicht";
+                }
+                if(bmiValue >= 30.0) {
+                    category = "Adipositas";
+                }
+                return category;
+            }
+
+            // Ausgabe String auf Konsole
+            function buildOutputString (arg1, arg2) {
+                console.log("Hallo du hast einen BMI von " + arg1 + ", das bedeutet " + arg2);
+            }
+
+        // Programmausführung
+            //Eingabe Größe, Konvertierung in Number, Umrechnung in Meter
+            var myHeightCm = inputHeight();
+            var myHeight = convertCmToMeter(myHeightCm);
+            
+            //Eingabe Gewicht, Konvertierung in Number
+            var myWeight = inputWeight();
+
+            //Berechnung BMI und Rundung auf eine Dezimalstelle
+            var myBMI = calculateBMI(myHeight, myWeight);
+            var myBmiRounded = rountToOneFloat(myBMI);
+
+            //BMI-Kategorie
+            var myCategory = getCategoryFromBMI(myBmiRounded);
+
+            //Ausgabe
+            buildOutputString(myBmiRounded, myCategory);
+            
+        </script>
+    </head>
+    <body>
+        <h1>BMI-Rechner von Marcel Almesberger dh181812</h1>
+    </body>
+</html>
