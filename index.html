@@ -1,93 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
     <head>
-        <title>BMI-Rechner</title>
+        <title>BMI Calculator</title>
         <meta charset="UTF-8">
         <script>
         
-        // Funktionen
+        // FUNCTIONS
             
-            // Eingabe der Größe
+            // Input of Height
             function inputHeight () {
-                var height = prompt("Bitte gib deine Größe in cm ein!");
+                var height = prompt("Please enter your height in cm!");
                 height = parseInt(height);
                 if (height > 0 && height < 300) {
                     return height;
                 } else {
-                    console.log("Bitte gib für die Größe eine Zahl zwischen 1 und 299 ein!"); // Menschen größer als 300 cm eher unmöglich!!!
+                    console.log("Heigth: Enter a number between 1 and 299!");
                 }
             }
             
-            // Eingabe des Gewichts
+            // Input of Weight
             function inputWeight () {
-                var weight = prompt("Bitte gib dein Gewicht in kg ein!");
+                var weight = prompt("Please enter your weight in kg");
                 weight = parseInt(weight);
                 if (weight > 0 && weight < 500) {
                     return weight;
                 } else {
-                    console.log("Bitte gib für das Gewicht eine Zahl zwischen 1 und 499 ein!"); // Menschen schwerer als 500 kg eher unmöglich!!!
+                    console.log("Weight: Enter a number between 1 and 499");
                 }
             }
             
-            // Umrechnung Größe von Zentimeter in Meter
+            // Convert height from centimeter to meter
             function convertCmToMeter(valueInCm) {
                 return valueInCm / 100;
             }
 
-            // Berechnung BMI
+            // BMI Calculation
             function calculateBMI(height, weight) {
                 return weight / (height * height);
             }
 
-            // Runden auf 1 Dezimalstelle
+            // Rounding on one float
             function rountToOneFloat (value) {
                 return Math.round(value * 10) / 10;
             }
 
-            // Einteilung in BMI-Kategorie
+            // BMI Category
             function getCategoryFromBMI (bmiValue) {
                 var category = "";
                 if(bmiValue < 18.5) {
-                    category = "Untergewicht";
+                    category = "Underweight";
                 }
                 if(bmiValue >= 18.5 && bmiValue < 25.0) {
-                    category = "Normalgewicht";
+                    category = "Normal Weight";
                 }
                 if(bmiValue >= 25.0 && bmiValue < 30.0) {
-                    category = "Übergewicht";
+                    category = "Overweight";
                 }
                 if(bmiValue >= 30.0) {
-                    category = "Adipositas";
+                    category = "Obesity";
                 }
                 return category;
             }
 
-            // Ausgabe String auf Konsole
+            // Output String on Console
             function buildOutputString (arg1, arg2) {
-                console.log("Hallo du hast einen BMI von " + arg1 + ", das bedeutet " + arg2);
+                console.log("Your BMI is " + arg1 + ", that means " + arg2);
             }
 
-        // Programmausführung
-            //Eingabe Größe, Konvertierung in Number, Umrechnung in Meter
+        // PROGRAMM EXECUTIOIN
+
+            //Input Height and Converting
             var myHeightCm = inputHeight();
             var myHeight = convertCmToMeter(myHeightCm);
             
-            //Eingabe Gewicht, Konvertierung in Number
+            //Input Weight
             var myWeight = inputWeight();
 
-            //Berechnung BMI und Rundung auf eine Dezimalstelle
+            //Calculating BMI and rounding
             var myBMI = calculateBMI(myHeight, myWeight);
             var myBmiRounded = rountToOneFloat(myBMI);
 
-            //BMI-Kategorie
+            //BMI Category
             var myCategory = getCategoryFromBMI(myBmiRounded);
 
-            //Ausgabe
+            //Output String on Console
             buildOutputString(myBmiRounded, myCategory);
             
         </script>
     </head>
     <body>
-        <h1>BMI-Rechner von Marcel Almesberger dh181812</h1>
+        <h1>BMI Calculator by Marcel Almesberger</h1>
     </body>
 </html>
