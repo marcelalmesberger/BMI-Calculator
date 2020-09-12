@@ -2,6 +2,10 @@
 
 This program calculates the Body Mass Index (BMI) by using the entered height and weight and prints the BMI and its interpretation on the browser console.
 
+## Used technologies
+
+HTML, JavaScript
+
 ## Prerequisites
 
 No preparations needed.
